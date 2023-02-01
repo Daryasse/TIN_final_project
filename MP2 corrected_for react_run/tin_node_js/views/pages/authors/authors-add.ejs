@@ -1,0 +1,22 @@
+<%- include('../../fragment/header.ejs') %>
+  <main>
+    <div class="container main">
+      <form novalidate onsubmit="return validateForm();">
+        <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+        <input type="text" class="input" name="name" id="name" required>
+        <span id="errorFirstName"></span>
+        <label class="label-input" for="surname">Surname: <span class="symbol-required">*</span></label>
+        <input type="text" class="input" name="surname" id="surname" required>
+        <span id="errorLastName"></span>
+        <label class="label-input" for="nickname">Nickname: </label>
+        <input type="text" class="input" name="nickname" id="nickname">
+        <span id="errorNickname"></span>
+        <div class="form-btns">
+          <p id="errorSummary"></p>
+          <input class="btn btn-add-submit" type="submit" value="Add an author">
+          <a class="btn btn-cancel" href="/authors">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+<%- include('../../fragment/footer.ejs') %>

@@ -1,0 +1,92 @@
+<%- include('../../fragment/header.ejs') %>
+<!--<script type="application/javascript" src="../../js/validationCommon.js"></script>-->
+<!--<script type="application/javascript" src="../../js/validationBookForm.js"></script>-->
+  <main>
+    <div class="container main">
+      <h2 class="form-title"><%= pageTitle %></h2>
+      <form method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="_id" value="<%= bk._id %>">
+        <label class="label-input" for="title">Name: <span class="symbol-required">*</span></label>
+        <input type="text" class="<%if(errors.length !==0) {  if (errors.find(e=> e.path.includes('title'))) { %>error-type<%}}%> input" name="title" id="title" placeholder="2-30 characters" value="<%= bk.title%>" required
+                <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+        <span class="error-text" id="errorName">
+          <%if(errors.length !==0) {  if (errors.find(e=> e.path.includes('title'))) { %>
+            <%= errors.find(e=> e.path.includes('title')).message  %>
+          <% }} %>
+        </span>
+        <label class="label-input" for="author_id">Author: <span class="symbol-required">*</span></label>
+        <select class=" <%if(errors.length !==0) {  if (errors.find(e=> e.path.includes("author_id"))) { %>error-type<%}}%> input" name="author_id" id="author_id" required
+                <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+          <option value="">Choose the author</option>
+          <%for (let i=0; i<allAuth.length; i++) { let auth = allAuth[i]; %>
+          <option value="<%=  auth._id %>" label="<%= auth.name + " " + auth.surname%>"
+            <%= (bk.author_id !== null && (auth._id == bk.author_id)) ? 'selected': ''%>>
+          </option>
+          <%}%>
+        </select>
+        <span class="error-text" id="errorAuthor">
+          <%if(errors.length !==0) {  if (errors.find(e=> e.path.includes("author_id"))) { %>
+            <%= errors.find(e=> e.path.includes("author_id")).message  %>
+          <% }} %>
+        </span>
+        <label class="label-input" for="name">Price: <span class="symbol-required">*</span></label>
+        <input type="number" class="<% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('price'))) { %> error-type<%}}%> input" name="price" id="price" placeholder="1-200$" value="<%= bk.price%>" required
+                <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+        <span class="error-text" id="errorPrice">
+          <%if(errors.length !==0) {  if (errors.find(e=> e.path.includes('price'))) { %>
+            <%= errors.find(e=> e.path.includes('price')).message  %>
+          <% }} %>
+        </span>
+        <label class="label-input" for="image_link">Image link: <span class="symbol-required">*</span></label>
+        <input type="text" class="<% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('image_link'))) { %> error-type<%}}%> input" name="image_link" id="image_link" placeholder="link to image" value="<%= bk.image_link%>"
+               required <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+        <span class="error-text" id="errorLink">
+          <%if(errors.length !==0) {  if (errors.find(e=> e.path.includes('image_link'))) {%>
+            <%= errors.find(e=> e.path.includes('image_link')).message%>
+          <%}}%>
+        </span>
+        <div class="form-btns">
+          <p class="error-text" id="errorSummary">
+            <% if(errors.length !==0) { %>
+              Form contains errors.
+            <% } %>
+          </p>
+          <% if (formMode ==='showDetails'){%>
+            <a class="btn btn-edit" href="/books/edit/<%=bk._id%>">Edit book</a>
+          <%}%>
+          <% if (formMode !== 'showDetails' ){%>
+          <input class="btn btn-add-submit" type="submit" value="<%=btnLabel%>">
+          <a class="btn btn-cancel" href="/books">Cancel</a>
+          <% } else {%>
+            <a class="btn btn-cancel" href="/books">Return</a>
+          <% }%>
+        </div>
+      </form>
+      <% if ((formMode === 'showDetails' || formMode === 'edit') && bk.orders.length !==0 ){%>
+      <h2 class="details-title">Book's orders details</h2>
+      <table>
+        <thead>
+        <tr>
+          <td>Date</td>
+          <td>Client's name</td>
+          <td>Client's surname</td>
+          <td>Clint's birthdate</td>
+          <td>Client's email</td>
+        </tr>
+        </thead>
+        <tbody>
+        <%for (let b of bk.orders) { %>
+        <tr>
+          <td><%= b.date ? b.date.toISOString().split('T')[0]: ''%></td>
+          <td><%= b.clients.name%></td>
+          <td><%= b.clients.surname%></td>
+          <td><%= b.clients.birthdate ? b.clients.birthdate.toISOString().split('T')[0]: ''%></td>
+          <td><%= b.clients.email%></td>
+        </tr>
+          <%}%>
+        </tbody>
+      </table>
+      <%}%>
+    </div>
+  </main>
+<%- include('../../fragment/footer.ejs') %>

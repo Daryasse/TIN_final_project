@@ -1,0 +1,24 @@
+<%- include('../../fragment/header.ejs') %>
+  <main>
+    <script type="application/javascript" src="../../js/validationCommon.js"></script>
+    <script type="application/javascript" src="../../js/validationAuthorForm.js"></script>
+    <div class="container main">
+      <form novalidate onsubmit="return validateForm();">
+        <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+        <input type="text" class="error-type input" name="name" id="name" required>
+        <span class="error-text" id="errorFirstName">Field is required.</span>
+        <label class="label-input" for="surname">Surname: <span class="symbol-required">*</span></label>
+        <input type="text"  class="error-type input" name="surname" id="surname" required>
+        <span class="error-text" id="errorLastName">Field is required.</span>
+        <label class="label-input" for="nickname">Nickname: </label>
+        <input type="text" class="input" name="nickname" id="nickname">
+        <span class="error-text" id="errorNickname"></span>
+        <div class="form-btns">
+          <p class="error-text" id="errorSummary">Form contains errors.</p>
+          <input class="btn btn-add-submit" type="submit" value="Add an author">
+          <a class="btn btn-cancel" href="/authors">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+<%- include('../../fragment/footer.ejs') %>

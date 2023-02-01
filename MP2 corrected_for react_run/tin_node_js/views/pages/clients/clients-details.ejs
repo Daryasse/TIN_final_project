@@ -1,0 +1,44 @@
+<%- include('../../fragment/header.ejs') %>
+    <main>
+      <div class="container">
+        <form>
+          <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+          <input type="text" class="input" name="name" id="name" value="Anna" required disabled>
+          <span id="errorName"></span>
+          <label class="label-input" for="surname">Surname: <span class="symbol-required">*</span></label>
+          <input type="text" class="input" name="surname" id="surname" value="Sanlie" required disabled>
+          <span id="errorSurname"></span>
+          <label class="label-input" for="birthdate">Birthdate: <span class="symbol-required">*</span></label>
+          <input type="date" class="input" name="birthdate" id="birthdate" value="2001-10-12" required disabled>
+          <span id="errorBirthdate"></span>
+          <label class="label-input" for="email">Email: <span class="symbol-required">*</span></label>
+          <input type="email" class="input" name="email" id="email" value="annsanlie@gmail.com" required disabled>
+          <span id="errorEmail"></span>
+          <div class="form-btns">
+            <p id="errorSummary"></p>
+            <a class="btn btn-edit" href="clients-edit.ejs">Edit a client</a>
+          </div>
+        </form>
+        <h2 class="details-title">Client's orders details</h2>
+        <table>
+          <thead>
+            <tr>
+              <td>Date</td>
+              <td>Book name</td>
+              <td>Author</td>
+              <td>Price</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>13.12.2021</td>
+              <td>Crime and Punishment</td>
+              <td>Fyodor Dostoevsky</td>
+              <td>6$</td>
+            </tr>
+          </tbody>
+        </table>
+        <a class="btn btn-back" href="/clients">Back</a>
+      </div>
+    </main>
+<%- include('../../fragment/footer.ejs') %>

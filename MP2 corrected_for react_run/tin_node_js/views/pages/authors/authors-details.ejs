@@ -1,0 +1,37 @@
+<%- include('../../fragment/header.ejs') %>
+  <main>
+    <div class="container main">
+      <form>
+        <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+        <input type="text" class="input" name="name" id="name" value="Jane" required disabled>
+        <span id="errorFirstName"></span>
+        <label class="label-input" for="surname">Surname: <span class="symbol-required">*</span></label>
+        <input type="text" class="input" name="surname" id="surname" value="Austen" required disabled>
+        <span id="errorLastName"></span>
+        <label class="label-input" for="nickname">Nickname: </label>
+        <input type="text" class="input" name="nickname" id="nickname" value="Nancy" disabled>
+        <span id="errorNickname"></span>
+        <div class="form-btns">
+          <p id="errorSummary"></p>
+          <a class="btn btn-edit" href="authors-edit.ejs">Edit an author</a>
+        </div>
+      </form>
+      <h2 class="details-title">Books</h2>
+      <table>
+        <thead>
+          <tr>
+            <td>Name</td>
+            <td>Price</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Pride and Prejudice</td>
+            <td>6$</td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-back" href="/authors">Back</a>
+    </div>
+  </main>
+<%- include('../../fragment/footer.ejs') %>

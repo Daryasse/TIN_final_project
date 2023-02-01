@@ -1,0 +1,25 @@
+<%- include('../../fragment/header.ejs') %>
+    <main>
+      <div class="container main">
+        <form>
+          <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+          <input type="text" class="input" name="name" id="name" value="Anna" required>
+          <span id="errorName"></span>
+          <label class="label-input" for="surname">Surname: <span class="symbol-required">*</span></label>
+          <input type="text" class="input" name="surname" id="surname" value="Sanlie" required>
+          <span id="errorSurname"></span>
+          <label class="label-input" for="birthdate">Birthdate: <span class="symbol-required">*</span></label>
+          <input type="date" class="input" name="birthdate" id="birthdate" value="2001-10-12" required>
+          <span id="errorBirthdate"></span>
+          <label class="label-input" for="email">Email: <span class="symbol-required">*</span></label>
+          <input type="email" class="input" name="email" id="email" value="annsanlie@gmail.com" required>
+          <span id="errorEmail"></span>
+          <div class="form-btns">
+            <p id="errorSummary"></p>
+            <input class="btn btn-edit" type="submit" value="Edit a client">
+            <a class="btn btn-cancel" href="clients.ejs">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </main>
+<%- include('../../fragment/footer.ejs') %>

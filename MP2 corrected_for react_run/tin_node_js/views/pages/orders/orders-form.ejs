@@ -1,0 +1,91 @@
+<%- include('../../fragment/header.ejs') %>
+<!--<script type="application/javascript" src="../../js/validationCommon.js"></script>-->
+<!--<script type="application/javascript" src="../../js/validationOrderForm.js"></script>-->
+    <main>
+      <div class="container main">
+        <h2 class="form-title"><%= pageTitle %></h2>
+        <form method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();">
+          <input type="hidden" name="_id" value="<%= ord._id %>">
+          <label class="label-input" for="date">Date: <span class="symbol-required">*</span></label>
+          <input type="date" class=" <% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('date'))) { %>
+          error-type<%}}%> input" name="date" id="date" placeholder="yyyy-MM-dd" value="<%= (ord.date && formMode !== 'createNew')?
+                  ord.date.toISOString().split('T')[0]: ord.date%>"
+                 required <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+          <span class="error-text" id="errorDate">
+            <% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('date'))) { %>
+              <%= errors.find(e=> e.path.includes('date')).message %>
+            <% }} %>
+          </span>
+          <label class="label-input" for="client_id">Client: <span class="symbol-required">*</span></label>
+          <select class="<%if(errors.length !==0) {  if (errors.find(e=> e.path.includes("client_id"))) { %>
+          error-type<%}}%> input" name="client_id" id="client_id" required
+                  <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+            <option value="">Choose the client</option>
+            <%for (let i=0; i<allClients.length; i++) { let cl = allClients[i]; %>
+            <option value="<%= cl._id%>" label="<%= cl.name + " " + cl.surname%>"
+                    <%= (ord.client_id !==null && cl._id == ord.client_id) ? 'selected': ''%>>
+            </option>
+            <%}%>
+          </select>
+          <span class="error-text" id="errorName">
+            <%if(errors.length !==0) {  if (errors.find(e=> e.path.includes("client_id"))) { %>
+              <%= errors.find(e=> e.path.includes("client_id")).message  %>
+            <% }} %>
+          </span>
+          <label class="label-input" for="book_id">Book: <span class="symbol-required">*</span></label>
+          <select class="<%if(errors.length !==0) {  if (errors.find(e=> e.path.includes("book_id"))) { %>
+          error-type<%}}%> input" name="book_id" id="book_id" required
+                  <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+            <option value="" >Choose the book</option>
+            <%for (let i=0; i<allBooks.length; i++) { let bk = allBooks[i]; %>
+            <option value="<%= bk._id%>" label="<%= bk.title%>"
+                    <%= (ord.book_id!==null && bk._id == ord.book_id) ? 'selected': ''%>>
+            </option>
+            <%}%>
+          </select>
+          <span class="error-text" id="errorBook">
+            <%if(errors.length !==0) {  if (errors.find(e=> e.path.includes("book_id"))) { %>
+              <%= errors.find(e=> e.path.includes("book_id")).message  %>
+            <% }} %>
+          </span>
+          <div class="form-btns">
+            <p class="error-text" id="errorSummary">
+              <% if(errors.length !==0) { %>
+                Form contains errors.
+              <% } %>
+            </p>
+            <% if (formMode ==='showDetails'){%>
+            <a class="btn btn-edit" href="/orders/edit/<%=ord._id%>">Edit order</a>
+            <%}%>
+            <% if (formMode !== 'showDetails' ){%>
+            <input class="btn btn-add-submit" type="submit" value="<%=btnLabel%>">
+            <a class="btn btn-cancel" href="/orders">Cancel</a>
+            <% } else {%>
+              <a class="btn btn-cancel" href="/orders">Return</a>
+            <% }%>
+          </div>
+        </form>
+        <% if (formMode === 'showDetails' || formMode === 'edit'){%>
+        <h2 class="details-title">Order details</h2>
+        <table>
+          <thead>
+          <tr>
+            <td>Author</td>
+            <td>Client's email</td>
+            <td>Client's birthdate</td>
+            <td>Price</td>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+            <td><%= ord.book.author.name + " " + ord.book.author.surname%></td>
+            <td><%= ord.clients.email%></td>
+            <td><%= ord.clients.birthdate ? ord.clients.birthdate.toISOString().split('T')[0]: ''%></td>
+            <td><%= ord.book.price%>$</td>
+          </tr>
+          </tbody>
+        </table>
+        <%}%>
+      </div>
+    </main>
+<%- include('../../fragment/footer.ejs') %>

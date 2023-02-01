@@ -1,0 +1,82 @@
+<%- include('../../fragment/header.ejs') %>
+<!--<script type="application/javascript" src="../../js/validationCommon.js"></script>-->
+<!--<script type="application/javascript" src="../../js/validationAuthorForm.js"></script>-->
+  <main>
+    <div class="container main">
+      <h2 class="form-title"><%= pageTitle %></h2>
+      <form method="post" action="<%=formAction%>" novalidate onsubmit="return validateForm();" >
+        <input type="hidden" name="_id" value="<%= auth._id %>">
+        <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+        <input type="text" class="<%if(errors !=null) {  if (errors.find(e=> e.path.includes("name")) !== errors.find(e=> e.path.includes("surname"))) { %>
+        error-type<%}}%> input" name="name" id="name" placeholder="2-30 characters" value="<%= auth.name%>" required
+                <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+        <span class="error-text" id="errorFirstName">
+          <%if(errors !=null) {  if (errors.find(e=> e.path.includes("name")) !== errors.find(e=> e.path.includes("surname"))) { %>
+            <%= errors.find(e=> e.path.includes("name")).message  %>
+          <% }} %>
+        </span>
+        <label class="label-input" for="surname">Surname: <span class="symbol-required">*</span></label>
+        <input type="text" class="<% if(errors !=null) {  if (errors.find(e=> e.path.includes("surname"))) { %>
+        error-type<%}}%> input" name="surname" id="surname" placeholder="2-30 characters" value="<%= auth.surname%>" required
+                <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+        <span class="error-text" id="errorLastName">
+          <% if(errors !=null) {  if (errors.find(e=> e.path.includes("surname"))) { %>
+            <%= errors.find(e=> e.path.includes("surname")).message %>
+          <% }} %>
+        </span>
+        <label class="label-input" for="nickname">Nickname: </label>
+        <input type="text" class=" <% if(errors !=null) { if (errors.find(e=> e.path.includes('nickname'))) { %>
+        error-type<%}}%> input" name="nickname" id="nickname" placeholder="0-60 characters" value="<%= auth.nickname%>"
+                <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+        <span class="error-text" id="errorNickname">
+          <% if(errors !=null) { if (errors.find(e=> e.path.includes('nickname'))) { %>
+            <%= errors.find(e=> e.path.includes('nickname')).message %>
+          <% } }%>
+        </span>
+        <label class="label-input" for="image_link">Image link: <span class="symbol-required">*</span></label>
+        <input type="text" class="<% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('image_link'))) { %> error-type<%}}%> input" name="image_link" id="image_link" placeholder="link to image" value="<%=auth.image_link%>"
+               required <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+        <span class="error-text" id="errorLink">
+          <%if(errors.length !== 0) {  if (errors.find(e=> e.path.includes('image_link'))) {%>
+            <%= errors.find(e=> e.path.includes('image_link')).message%>
+          <%}}%>
+        </span>
+        <div class="form-btns">
+          <p class="error-text" id="errorSummary">
+            <% if(errors.length !==0) { %>
+              Form contains errors.
+            <% } %>
+          </p>
+          <% if (formMode ==='showDetails'){%>
+            <a class="btn btn-edit" href="/authors/edit/<%= auth._id%>">Edit an author</a>
+            <%}%>
+          <% if (formMode !== 'showDetails' ){%>
+            <input class="btn btn-add-submit" type="submit" value="<%=btnLabel%>">
+            <a class="btn btn-cancel" href="/authors">Cancel</a>
+          <% } else {%>
+          <a class="btn btn-cancel" href="/authors">Return</a>
+          <% }%>
+        </div>
+      </form>
+      <% if ((formMode === 'showDetails' || formMode === 'edit') && auth.book.length!==0)  {%>
+      <h2 class="details-title">Books</h2>
+        <table>
+          <thead>
+          <tr>
+            <td>Name</td>
+            <td>Price</td>
+          </tr>
+          </thead>
+          <tbody>
+          <% for (let a of auth.book) {%>
+            <tr>
+              <td><%= a.title%></td>
+              <td><%=a.price%>$</td>
+            </tr>
+          <% }%>
+          </tbody>
+        </table>
+      <%}%>
+    </div>
+  </main>
+<%- include('../../fragment/footer.ejs') %>

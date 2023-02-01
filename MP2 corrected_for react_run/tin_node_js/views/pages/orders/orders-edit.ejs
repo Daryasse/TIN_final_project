@@ -1,0 +1,32 @@
+<%- include('../../fragment/header.ejs') %>
+    <main>
+      <div class="container main">
+        <form>
+          <label class="label-input" for="date">Date: <span class="symbol-required">*</span></label>
+          <input type="date" class="input" name="date" id="date" value="2022-07-19" required>
+          <span id="errorDate"></span>
+          <label class="label-input" for="client">Client: <span class="symbol-required">*</span></label>
+          <select class="input" name="client" id="client" required>
+            <option value="">Choose the client</option>
+            <option value="1">Anna Sanlie</option>
+            <option value="2">John Parker</option>
+            <option value="3" selected>Lilo Adams</option>
+          </select>
+          <span id="errorName"></span>
+          <label class="label-input" for="book">Book: <span class="symbol-required">*</span></label>
+          <select class="input" name="book" id="book" required>
+            <option value="">Choose the book</option>
+            <option value="1">Crime and Punishment</option>
+            <option value="2" selected>The Little Prince</option>
+            <option value="3">Pride and Prejudice</option>
+          </select>
+          <span id="errorAuthor"></span>
+          <div class="form-btns">
+            <p id="errorSummary"></p>
+            <input class="btn btn-edit" type="submit" value="Edit an order">
+            <a class="btn btn-cancel" href="orders.ejs">Cancel</a>
+          </div>
+        </form>
+      </div>
+    </main>
+<%- include('../../fragment/footer.ejs') %>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" type="text/css" href="../../css/style.css">
+</head>
+<body>
+<header>
+    <nav class="header-nav">
+        <div class="container">
+            <ul class="header-list list-reset flex">
+                <li class="header-list-item">
+                    <a href="/" class="header-link <%=navLocation ==='home'? 'page-title': ''%>">
+                        Home
+                    </a>
+                </li>
+                <li class="header-list-item">
+                    <a href="/books" class="header-link <%=navLocation ==='books'? 'page-title': ''%>">
+                        Books
+                    </a>
+                </li>
+                <li class="header-list-item">
+                    <a href="/authors" class="header-link <%=navLocation ==='authors'? 'page-title': ''%>">
+                        Authors
+                    </a>
+                </li>
+                <% if (loggedUser) {%>
+                <li class="header-list-item">
+                    <a href="/clients" class="header-link <%=navLocation ==='clients'? 'page-title': ''%>">
+                        Clients
+                    </a>
+                </li>
+                <% } %>
+                <li class="header-list-item">
+                    <a href="/orders" class="header-link <%=navLocation ==='orders'? 'page-title': ''%>">
+                        Orders
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+</header>

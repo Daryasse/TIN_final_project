@@ -1,0 +1,30 @@
+<%- include('../../fragment/header.ejs') %>
+  <main>
+
+    <div class="container main">
+      <ul class="list-reset">
+        <%for (const auth of auths) { %>
+        <li class="list-item flex">
+          <img class="list-item-image" src="<%=auth.image_link%>"; alt="<%= auth.name+" "+ auth.surname%>">
+          <div class="list-item-info flex">
+            <span class="list-item-main"><%= auth.name+" "+ auth.surname%></span>
+            <span class="list-item-secondary"><%= auth.nickname%></span>
+          </div>
+          <ul class="list-reset list-item-actions flex">
+            <li>
+              <a class="btn btn-details" href="/authors/details/<%=auth._id%>">Details</a>
+            </li>
+            <li>
+              <a class="btn btn-edit" href="/authors/edit/<%=auth._id%>">Edit</a>
+            </li>
+            <li>
+              <a class="btn btn-remove" href="/authors/delete/<%=auth._id%>">Remove</a>
+            </li>
+          </ul>
+        </li>
+        <% } %>
+      </ul>
+      <a class="btn btn-add" href="/authors/add">Add an author</a>
+    </div>
+  </main>
+<%- include('../../fragment/footer.ejs') %>

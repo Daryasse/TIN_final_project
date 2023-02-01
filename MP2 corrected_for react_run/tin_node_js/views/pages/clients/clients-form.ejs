@@ -1,0 +1,98 @@
+<%- include('../../fragment/header.ejs') %>
+<!--<script type="application/javascript" src="../../js/validationCommon.js"></script>-->
+<!--<script type="application/javascript" src="../../js/validationClientForm.js"></script>-->
+    <main>
+      <div class="container main">
+        <h2 class="form-title"><%= pageTitle%></h2>
+        <form method="post" action="<%= formAction%>" novalidate onsubmit="return validateForm();">
+          <input type="hidden" name="_id" value="<%= cl._id%>">
+          <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+          <input type="text" class="<%if(errors!== null) {  if (errors.find(e=> e.path.includes("name")) !== errors.find(e=> e.path.includes("surname"))) {%>
+          error-type<%}}%> input" name="name" id="name" placeholder="2-30 characters" value="<%= cl.name%>" required
+                  <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+          <span class="error-text" id="errorName">
+            <%if(errors!== null) {  if (errors.find(e=> e.path.includes("name")) !== errors.find(e=> e.path.includes("surname"))) { %>
+              <%= errors.find(e=> e.path.includes("name")).message  %>
+            <% }} %>
+          </span>
+          <label class="label-input" for="surname">Surname: <span class="symbol-required">*</span></label>
+          <input type="text" class="<% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('surname'))) { %>
+          error-type<%}}%> input" name="surname" id="surname" placeholder="2-30 characters" value="<%= cl.surname%>" required
+                  <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+          <span class="error-text" id="errorSurname">
+            <% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('surname'))) { %>
+              <%= errors.find(e=> e.path.includes('surname')).message %>
+            <% }} %>
+          </span>
+          <label class="label-input" for="birthdate">Birthdate: <span class="symbol-required">*</span></label>
+          <input type="date" class="<% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('birthdate'))) { %>error-type<%}}%>
+          input" name="birthdate" id="birthdate" placeholder="yyyy-MM-dd" value="<%= (cl.birthdate && formMode !== 'createNew')?
+                  cl.birthdate.toISOString().split('T')[0]: cl.birthdate%>"
+                 required <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+          <span class="error-text" id="errorBirthdate">
+            <% if(errors.length !==0) {  if (errors.find(e=> e.path.includes('birthdate'))) { %>
+              <%= errors.find(e=> e.path.includes('birthdate')).message %>
+            <% }} %>
+          </span>
+          <label class="label-input" for="email">Email: <span class="symbol-required">*</span></label>
+          <input type="email" class="<% if(errors.length !==0) { if (errors.find(e=> e.path.includes('email'))) { %>
+          error-type<%}}%> input" name="email" id="email" placeholder="name@dom.com" value="<%= cl.email%>" required
+                  <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+          <span class="error-text" id="errorEmail">
+            <% if(errors.length !==0) { if (errors.find(e=> e.path.includes('email'))) { %>
+              <%= errors.find(e=> e.path.includes('email')).message %>
+            <% } }%>
+          </span>
+          <label class="label-input" for="password"><%= __('client.fields.password')%>: <span class="symbol-required">*</span></label>
+          <input type="text" class="<% if(errors.length !==0) { if (errors.find(e=> e.path.includes('password'))) { %>
+          error-type<%}}%> input" name="password" id="password" placeholder="password" value="<%= cl.password%>" required
+                  <%= (formMode === 'showDetails') ? 'disabled': ''%>>
+          <span class="error-text" id="errorPassword">
+            <% if(errors.length !==0) { if (errors.find(e=> e.path.includes('password'))) { %>
+              <%= errors.find(e=> e.path.includes('password')).message %>
+            <% } }%>
+          </span>
+          <div class="form-btns">
+            <p class="error-text" id="errorSummary">
+              <% if(errors.length !==0) { %>
+                Form contains errors.
+              <% } %>
+            </p>
+            <% if (formMode ==='showDetails'){%>
+              <a class="btn btn-edit" href="/clients/edit/<%= cl._id%>">Edit a client</a>
+            <%}%>
+            <% if (formMode !== 'showDetails' ){%>
+            <input class="btn btn-add-submit" type="submit" value="<%=btnLabel%>">
+            <a class="btn btn-cancel" href="/clients">Cancel</a>
+            <% } else {%>
+              <a class="btn btn-cancel" href="/clients">Return</a>
+            <% }%>
+          </div>
+        </form>
+        <%if ((formMode === 'showDetails' || formMode === 'edit') && cl.orders.length !==0) {%>
+        <h2 class="details-title">Client's orders details</h2>
+        <table>
+          <thead>
+          <tr>
+            <td>Date</td>
+            <td>Book name</td>
+            <td>Author</td>
+            <td>Price</td>
+          </tr>
+          </thead>
+          <tbody>
+          <%for (let o of cl.orders) { %>
+          <tr>
+            <td><%= o.date ?
+                      o.date.toISOString().split('T')[0]: ''%></td>
+            <td><%= o.book.title%></td>
+            <td><%= o.book.author.name + ' ' + o.book.author.surname%></td>
+            <td><%= o.book.price%>$</td>
+          </tr>
+          <% }%>
+          </tbody>
+        </table>
+      <%}%>
+      </div>
+    </main>
+<%- include('../../fragment/footer.ejs') %>

@@ -1,0 +1,430 @@
+html {
+font-family:'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande';
+background: #FFFFFF;
+}
+
+body {
+  font-weight: 400;
+  margin: 0;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+h1, h2 {
+   margin: 0;
+}
+
+p {
+  margin: 0;
+}
+
+header {
+  border-bottom: 1px solid #dadada;
+  margin-bottom: 50px;
+}
+
+footer {
+  min-height: 7vh;
+  max-height: 8vh;
+  border-top: 1px solid #dadada;
+  align-items: center;
+  justify-content: center;
+}
+
+.container {
+  box-sizing: border-box;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.container.main {
+  min-height: 75vh;
+}
+
+.flex {
+  display: flex;
+}
+
+.list-reset {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-list {
+  justify-content: space-between;
+  margin-top: 35px;
+}
+
+.header-link {
+  font-style: normal;
+  font-weight: 700;
+  font-size: 32px;
+  line-height: 40px;
+  color: #6E6E6E;
+}
+
+.home-block{
+  flex-direction: row;
+  flex-wrap: nowrap;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.image-home {
+  max-width: 650px;
+  max-height: 400px;
+  margin-right: 30px;
+  float: left;
+  border-radius: 14px;
+  overflow: hidden;
+}
+
+.home-title {
+  max-width: 300px;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 48px;
+  line-height: 80px;
+  color: #000000;
+}
+
+.home-descr {
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 29px;
+  color: #000000;
+}
+
+.footer-span {
+  color: #dadada;
+}
+
+.page-title {
+  color: #000000;
+}
+
+.list-item {
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 30px;
+  border: 2px solid #dadada;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.list-item-image {
+  max-height: 30vh;
+  max-width: 15%;
+}
+
+.list-item-info {
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.list-item-main{
+  display: block;
+  padding: 0;
+  font-size: 24px;
+}
+
+.list-item-secondary {
+  display: block;
+  padding: 0;
+  color:#6E6E6E;
+}
+
+.list-item-actions {
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 30px;
+}
+
+.btn {
+  display: inline-block;
+  background-color: transparent;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 15px;
+  border-radius: 8px;
+  padding: 7px 20px;
+}
+
+.btn-details, .btn-edit {
+  margin-bottom: 15px;
+}
+
+.btn-add-submit {
+  border: 4px solid #27ae60;
+}
+
+.btn-add {
+  display: block;
+  max-width: max-content;
+  border: 4px solid #27ae60;
+  margin: 0 auto;
+  margin-bottom: 30px;
+}
+
+.btn-details {
+  border: 4px solid #2980b9;
+}
+
+.btn-edit {
+  border: 4px solid #f89c12;
+}
+
+.btn-remove {
+  border: 4px solid #c0392b;
+}
+
+.btn-cancel {
+  border: 4px solid #6E6E6E;
+}
+
+.btn-back{
+  border: 4px solid #000000;
+  margin-bottom: 68px;
+}
+
+.empty-list-case {
+  color: red;
+  margin-bottom: 20px;
+}
+
+form {
+  max-width: 350px;
+  margin-bottom: 10px;
+  display: grid;
+  grid-template-columns: 150px 300px 1fr;
+  gap: 1em;
+}
+
+.form-title {
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+select, input, textarea {
+  font-size: 100%;
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+textarea {
+  overflow: auto;
+}
+
+.form-btns {
+  grid-column: 1/ span 2;
+}
+
+.input{
+  width: 100%;
+  margin-bottom: 15px;
+  border: 2px solid #dadada;
+  border-radius: 8px;
+  padding: 5px 0;
+}
+
+.label-input {
+  margin-top: 7px;
+}
+
+.input:not(select){
+  padding: 5px;
+}
+
+.symbol-required {
+  color: #e74c3c;
+  font-weight: 600;
+}
+
+.details-title {
+  font-size: 25px;
+}
+
+table {
+  margin-bottom: 15px;
+  border-collapse:separate;
+  text-align: center;
+}
+
+.section-table {
+  margin: 0 auto;
+  margin-bottom: 15px;
+}
+
+table tr, table td {
+  padding: 5px 7px;
+  border: 1px solid #6E6E6E;
+}
+
+.input.error-type {
+  border: 2px solid #e74c3c;
+  margin-bottom: 5px;
+}
+
+.error-text {
+  display: block;
+  font-size: 10px;
+  color: #e74c3c;
+  margin-bottom: 10px;
+}
+
+.table.btn {
+  margin: 0;
+}
+
+@media all and (max-width: 720px){
+  body{
+    min-width: 360px;
+  }
+
+  body, nav, header,
+  .header-list, main,
+  footer, .container {
+    margin: 0;
+  }
+
+  .header-list {
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .header-link {
+    font-size: 20px;
+    margin-bottom: 0;
+    line-height: 5px;
+  }
+
+  .header-list-item {
+    align-items: center;
+  }
+
+  form{
+    max-width: 90vw;
+    grid-template-columns: 1fr;
+    row-gap: unset;
+    margin-left: unset;
+  }
+
+  .form-btns {
+    grid-column: 1 / 1;
+  }
+
+  .home-block {
+    flex-direction: column;
+  }
+
+  .image-home {
+    max-width: 93vw;
+    margin-bottom: 20px;
+  }
+
+  .home-title {
+    max-width: 93vw;
+    font-size: 33px;
+    line-height: 30px;
+  }
+
+  .home-descr {
+    font-size: 18px;
+  }
+
+  .list-item-actions {
+    margin-right: 20px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  .table.btn:not(.btn-remove) {
+    margin-bottom: 7px;
+  }
+
+}
+
+@media all and (max-width: 400px){
+  body{
+    min-width: 360px;
+  }
+
+  body, nav, header,
+  .header-list, main, footer, .container {
+    margin: 0;
+  }
+
+  .header-list {
+    flex-direction: column;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  form{
+    max-width: 100vw;
+    grid-template-columns: 1fr;
+    row-gap: unset;
+    margin-left: unset;
+  }
+  
+  .header-list {
+    flex-direction: column;
+    align-items: center;
+    font-size: 18px;
+    font-weight: 300;
+  }
+
+  .header-link {
+    font-size: 20px;
+    margin-bottom: 0;
+    line-height: 5px;
+  }
+
+  .header-list-item {
+    align-items: center;
+  }
+
+  .home-block {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .image-home {
+    max-width: 90vw;
+    margin-bottom: 20px;
+  }
+
+  .home-title {
+    max-width: 90vw;
+    font-size: 28px;
+    line-height: 30px;
+  }
+
+  .home-descr {
+    font-size: 15px;
+  }
+
+  .list-item-info {
+    align-items: flex-start;
+  }
+
+  .list-item-actions {
+    margin-right: 15px;
+    padding-top: 3px;
+    padding-bottom: 3px;
+  }
+
+  .table.btn:not(.btn-remove) {
+    margin-bottom: 5px;
+  }
+}

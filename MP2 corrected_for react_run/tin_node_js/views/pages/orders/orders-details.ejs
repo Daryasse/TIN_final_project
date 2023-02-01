@@ -1,0 +1,51 @@
+<%- include('../../fragment/header.ejs') %>
+    <main>
+      <div class="container main">
+        <form>
+          <label class="label-input" for="date">Date: <span class="symbol-required">*</span></label>
+          <input type="date" class="input" name="date" id="date" value="2022-07-19" required disabled>
+          <span id="errorDate"></span>
+          <label class="label-input" for="client">Client: <span class="symbol-required">*</span></label>
+          <select class="input" name="client" id="client" required disabled>
+            <option value="">Choose the client</option>
+            <option value="1">Anna Sanlie</option>
+            <option value="2">John Parker</option>
+            <option value="3" selected>Lilo Adams</option>
+          </select>
+          <span id="errorName"></span>
+          <label class="label-input" for="book">Book: <span class="symbol-required">*</span></label>
+          <select class="input" name="book" id="book" required disabled>
+            <option value="">Choose the book</option>
+            <option value="1">Crime and Punishment</option>
+            <option value="2" selected>The Little Prince</option>
+            <option value="3">Pride and Prejudice</option>
+          </select>
+          <span id="errorAuthor"></span>
+          <div>
+            <p id="errorSummary"></p>
+            <a class="btn btn-edit" href="orders-edit.ejs">Edit an order</a>
+          </div>
+        </form>
+        <h2 class="details-title">Order details</h2>
+        <table>
+          <thead>
+            <tr>
+              <td>Author</td>
+              <td>Client's email</td>
+              <td>Client's birthdate</td>
+              <td>Price</td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Antoine de Saint-Exupéry</td>
+              <td>liloadams@gmail.com</td>
+              <td>03.05.2007</td>
+              <td>3$</td>
+            </tr>
+          </tbody>
+        </table>
+         <a class="btn btn-back" href="/orders">Back</a>
+      </div>
+    </main>
+<%- include('../../fragment/footer.ejs') %>

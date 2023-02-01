@@ -1,0 +1,34 @@
+<%- include('./fragment/header.ejs') %>
+
+<% if(!loggedUser) { %>
+  <main>
+    <div id="login" class="container main">
+      <h5>Logowanie</h5>
+      <form method="post" action="/login" novalidate>
+        <label for="loginEmail">Email:</label>
+        <input type="email" id="loginEmail" name="email">
+
+        <label for="loginPassword">Password:</label>
+        <input type="password" id="loginPassword" name="password">
+
+        <input type="submit" value="Sign in">
+        <span id="loginErrors"><%= loginError ? loginError : ''%></span>
+      </form>
+    </div>
+  </main>
+<% } else{ %>
+  <main>
+    <div class="container main">
+      <div class="home-block flex">
+        <img class ="image-home" src="../img/head_shelf.jpg" alt="shelves looking like head">
+        <h1 class="home-title">
+          A BOOK IS A DEVICE TO LIGHT THE IMAGINATION
+        </h1>
+      </div>
+      <p class="home-descr">
+        Our bookshop works to connect readers with independent booksellers all over the world. We believe local bookstores are essential community hubs that foster culture, curiosity, and a  love of reading, and we’re committed to helping them thrive.
+      </p>
+    </div>
+  </main>
+<% } %>
+<%- include('./fragment/footer.ejs') %>

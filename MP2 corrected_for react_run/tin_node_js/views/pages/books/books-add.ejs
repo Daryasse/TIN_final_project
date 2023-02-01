@@ -1,0 +1,27 @@
+<%- include('../../fragment/header.ejs') %>
+  <main>
+    <div class="container main">
+      <form>
+        <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+        <input type="text" class="input" name="name" id="name" required>
+        <span id="errorName"></span>
+        <label class="label-input" for="author">Author: <span class="symbol-required">*</span></label>
+        <select class="input" name="author" id="author" required>
+          <option value="">Choose the author</option>
+          <option value="1">Jane Austen</option>
+          <option value="2">Antoine de Saint-Exupéry</option>
+          <option value="3">Fyodor Dostoevsky</option>
+        </select>
+        <span id="errorAuthor"></span>
+        <label class="label-input" for="name">Price: <span class="symbol-required">*</span></label>
+        <input type="number" class="input" name="price" id="price" placeholder="$" required>
+        <span id="errorPrice"></span>
+        <div class="form-btns">
+          <p id="errorSummary"></p>
+          <input class="btn btn-add-submit" type="submit" value="Add a book">
+          <a class="btn btn-cancel" href="books.ejs">Cancel</a>
+        </div>
+      </form>
+    </div>
+  </main>
+<%- include('../../fragment/footer.ejs') %>

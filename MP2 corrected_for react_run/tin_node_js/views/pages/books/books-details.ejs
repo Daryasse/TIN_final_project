@@ -1,0 +1,55 @@
+<%- include('../../fragment/header.ejs') %>
+  <main>
+    <div class="container main">
+      <form>
+        <label class="label-input" for="name">Name: <span class="symbol-required">*</span></label>
+        <input type="text" class="input" name="name" id="name" value="Crime and Punishment" required disabled>
+        <span id="errorName"></span>
+        <label class="label-input" for="author">Author: <span class="symbol-required">*</span></label>
+        <select class="input" name="author" id="author" required disabled>
+          <option value="">Choose the author</option>
+          <option value="1">Jane Austen</option>
+          <option value="2">Antoine de Saint-Exupéry</option>
+          <option value="3" selected>Fyodor Dostoevsky</option>
+        </select>
+        <span id="errorAuthor"></span>
+        <label class="label-input" for="name">Price: <span class="symbol-required">*</span></label>
+        <input type="number" class="input" name="price" id="price" value="6" required disabled>
+        <span id="errorPrice"></span>
+        <div>
+          <p id="errorSummary"></p>
+          <a class="btn btn-edit" href="books-edit.ejs">Edit a book</a>
+        </div>
+      </form>
+      <h2 class="details-title">Book's orders details</h2>
+      <table>
+        <thead>
+          <tr>
+            <td>Date</td>
+            <td>Client's name</td>
+            <td>Client's surname</td>
+            <td>Clint's birthdate</td>
+            <td>Client's email</td>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>13.12.2021</td>
+            <td>Anna</td>
+            <td>Sanlie</td>
+            <td>12.10.2001</td>
+            <td>annsanlie@gmail.com</td>
+          </tr>
+          <tr>
+            <td>13.02.2022</td>
+            <td>John</td>
+            <td>Parker</td>
+            <td>20.02.1990</td>
+            <td>jparker@gmail.com</td>
+          </tr>
+        </tbody>
+      </table>
+      <a class="btn btn-back" href="/books">Back</a>
+    </div>
+  </main>
+<%- include('../../fragment/footer.ejs') %>

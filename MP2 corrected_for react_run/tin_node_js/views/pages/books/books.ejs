@@ -1,0 +1,30 @@
+<%- include('../../fragment/header.ejs') %>
+    <main>
+      <div class="container main">
+        <ul class="list-reset">
+          <%for (const book of books){%>
+          <li class="list-item flex">
+            <img class="list-item-image" src="<%=book.image_link%>" alt="book image">
+            <div class="list-item-info flex">
+              <span class="list-item-main"><%= book.title%></span>
+              <span class="list-item-secondary"><%= book.author.name + " " + book.author.surname%></span>
+            </div>
+            <span><%= book.price%>$</span>
+            <ul class="list-reset list-item-actions flex">
+              <li>
+                <a class="btn btn-details" href="/books/details/<%=book._id%>">Details</a>
+              </li>
+              <li>
+                <a class="btn btn-edit" href="/books/edit/<%= book._id%>">Edit</a>
+              </li>
+              <li>
+                <a class="btn btn-remove" href="/books/delete/<%= book._id%>">Remove</a>
+              </li>
+            </ul>
+          </li>
+          <% } %>
+        </ul>
+        <a class="btn btn-add" href="/books/add">Add a book</a>
+      </div>
+    </main>
+<%- include('../../fragment/footer.ejs') %>

@@ -1,0 +1,1 @@
+The project shoould be runed as 2 separate projects. The first one in MP2 corrected_for react_run there is API, and in MP3_react there is a react app.
